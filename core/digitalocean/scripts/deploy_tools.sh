@@ -10,22 +10,32 @@ echo '/swapfile none swap sw 0 0' | tee -a /etc/fstab
 echo 'vm.vfs_cache_pressure=50' >> /etc/sysctl.conf
 
 apt update
+apt-get install -y build-essential
 wget https://go.dev/dl/go1.20.1.linux-amd64.tar.gz
 rm -rf /usr/local/go && tar -C /usr/local -xzf go1.20.1.linux-amd64.tar.gz
-echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.bashrc
-echo 'export PATH=$PATH:$HOME/go/bin' >> ~/.bashrc
-source ~/.bashrc
-go version
+echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.profile
+echo 'export PATH=$PATH:$HOME/go/bin' >> ~/.profile
+
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$HOME/go/bin
+export GOMODCACHE="/root/go/pkg/mod"
+export GOPATH="/root/go"
+export GOCACHE="/root/.cache/go-build"
+export GOROOT="/usr/local/go"
+export GOHOSTARCH="amd64"
+export GOHOSTOS="linux"
+export CGO_ENABLED="1"
+
 
 # Amass
-go install -v github.com/OWASP/Amass/v3/...@master
+/usr/local/go/bin/go install -v github.com/OWASP/Amass/v3/...@master
 
 # Naabu
 apt install -y libpcap-dev
-go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest
+/usr/local/go/bin/go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest
 
 # ffuf
-go install github.com/ffuf/ffuf/v2@latest
+/usr/local/go/bin/go install github.com/ffuf/ffuf/v2@latest
 
 # wordlist
 mkdir ~/wordlists
@@ -38,5 +48,4 @@ wget https://wordlists-cdn.assetnote.io/data/automated/httparchive_parameters_to
 wget https://wordlists-cdn.assetnote.io/data/automated/httparchive_js_2022_12_28.txt
 wget https://wordlists-cdn.assetnote.io/data/automated/httparchive_directories_1m_2022_12_28.txt
 wget https://wordlists-cdn.assetnote.io/data/automated/httparchive_apiroutes_2022_12_28.txt
-
 
