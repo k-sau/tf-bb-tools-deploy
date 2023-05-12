@@ -37,6 +37,9 @@ apt install -y libpcap-dev
 # ffuf
 /usr/local/go/bin/go install github.com/ffuf/ffuf/v2@latest
 
+# httpx
+/usr/local/go/bin/go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
+
 # wordlist
 mkdir ~/wordlists
 

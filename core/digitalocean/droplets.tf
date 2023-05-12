@@ -7,7 +7,7 @@ resource "digitalocean_droplet" "droplet" {
   user_data = file("core/digitalocean/scripts/deploy_tools.sh")
   ssh_keys = [
     # doctl compute ssh-key list
-    35943218, 27925142
+    38294353
   ]
   tags = ["tf"]
 }
