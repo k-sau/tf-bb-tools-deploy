@@ -28,7 +28,7 @@ export CGO_ENABLED="1"
 
 
 # Amass
-/usr/local/go/bin/go install -v github.com/OWASP/Amass/v3/...@master
+/usr/local/go/bin/go install -v github.com/owasp-amass/amass/v3/...@master
 
 # Naabu
 apt install -y libpcap-dev
