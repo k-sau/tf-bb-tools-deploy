@@ -40,6 +40,16 @@ apt install -y libpcap-dev
 # httpx
 /usr/local/go/bin/go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
 
+# Nuclei
+/usr/local/go/bin/go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
+
+# Katana
+/usr/local/go/bin/go install github.com/projectdiscovery/katana/cmd/katana@latest
+
+# TruffleHog
+git clone https://github.com/trufflesecurity/trufflehog.git
+cd trufflehog; go install
+
 # wordlist
 mkdir ~/wordlists
 
